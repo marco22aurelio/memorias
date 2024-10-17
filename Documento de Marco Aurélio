@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eduardo rosa 's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #fafaf8;
+            --text-color: #000000;
+            --project-bg: #f5f5f5;
+            --project-hover: #e0e0e0;
+            --description-color: #333;
+            --year-color: #666;
+            --glow-color: rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --project-bg: #2a2a2a;
+            --project-hover: #3a3a3a;
+            --description-color: #cccccc;
+            --year-color: #999999;
+            --glow-color: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .header-text h1 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin: 0;
+        }
+        .description {
+            margin-bottom: 40px;
+            font-size: 1em;
+            color: var(--description-color);
+            font-weight: 400;
+        }
+        .projects h2 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .project {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: var(--project-bg);
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        [data-theme="dark"] .project {
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+        .project:hover {
+            background-color: var(--project-hover);
+            transform: scale(1.01);
+        }
+        [data-theme="dark"] .project:hover {
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+        .project h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.2em;
+            margin: 0 0 5px;
+            font-weight: 500;
+        }
+        .project p {
+            margin: 0;
+            font-size: 0.9em;
+            color: var(--description-color);
+        }
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        .year {
+            float: right;
+            font-size: 0.9em;
+            color: var(--year-color);
+        }
+        .links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        .links a {
+            font-size: 1em;
+            font-weight: 500;
+        }
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--project-bg);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+        .theme-toggle:hover {
+            background-color: var(--project-hover);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-text">
+                <h1>Hey, I'm Eduardo rosa .</h1>
+            </div>
+        </div>
+
+        <div class="description">
+            <p>Sou um físico e matemático brasileiro. Entrou para o rol dos maiores gênios da humanidade ao desenvolver a Teoria da Relatividade. Estabeleceu a relação entre massa e energia e formulou a equação que se tornou a mais famosa do mundo: E &#x3D; mc².</p>
+        </div>
+
+        <div class="links">
+                <a href="" target="_blank">GitHub →</a>
+                <a href="" target="_blank">LinkedIn →</a>
+                <a href="" target="_blank">Resume →</a>
+                <a href="" target="_blank">Email →</a>
+        </div>
+        
+            <div class="projects">
+                <h2>Projects</h2>
+                    <a href="https://github.com/Fhbdhj/Fhbdhj-Buiu-me-d-10.git" target="_blank">
+                        <div class="project">
+                            <span class="year"></span>
+                            <h3>Fhbdhj-Buiu-me-d-10</h3>
+                            <p>Marco me deve : 100€
+Kaio me deve : 50€</p>
+                        </div>
+                    </a>
+            </div>
+
+    </div>
+
+    <button class="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+
+    <script>
+        const themeToggle = document.querySelector('.theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        function setTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.body.getAttribute('data-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        // Set initial theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else if (prefersDarkScheme.matches) {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }
+    </script>
+</body>
+</html>
